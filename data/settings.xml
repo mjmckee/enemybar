@@ -1,0 +1,24 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <global>
+            <BGPath>C:\Program Files (x86)\Windower4\/addons/enemybar/bar_bg.png</BGPath>
+            <FGPath>C:\Program Files (x86)\Windower4\/addons/enemybar/bar_fg.png</FGPath>
+            <X>341</X>
+            <Y>50</Y>
+            <font>Arial</font>
+            <height>10</height>
+            <stBGPath>C:\Program Files (x86)\Windower4\/addons/enemybar/st_bar_bg.png</stBGPath>
+            <stFGPath>C:\Program Files (x86)\Windower4\/addons/enemybar/st_bar_fg.png</stFGPath>
+            <strkSize>1</strkSize>
+            <style>0</style>
+            <subtargetBarHeight>10</subtargetBarHeight>
+            <subtargetBarWidth>198</subtargetBarWidth>
+            <targetBarHeight>10</targetBarHeight>
+            <targetBarWidth>598</targetBarWidth>
+            <txtSize>14</txtSize>
+            <visible>false</visible>
+            <width>598</width>
+        </global>
+    </global>
+</settings>
