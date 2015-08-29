@@ -1,0 +1,16 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <X>341</X>
+        <Y>50</Y>
+        <font>Arial</font>
+        <strokeSize>1</strokeSize>
+        <style>0</style>
+        <subtargetBarHeight>12</subtargetBarHeight>
+        <subtargetBarWidth>198</subtargetBarWidth>
+        <targetBarHeight>12</targetBarHeight>
+        <targetBarWidth>598</targetBarWidth>
+        <textSize>14</textSize>
+        <visible>false</visible>
+    </global>
+</settings>
