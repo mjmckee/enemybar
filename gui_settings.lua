@@ -221,6 +221,10 @@ config.register(settings, function(settings_table)
         nx = settings_table.pos.x
     end
     
+    -- Subtarget bar sits under the main bar, right-aligned with it (x + 400 with the default widths)
+    local sub_x = nx + targetBarWidth - subtargetBarWidth
+    local sub_y = settings_table.pos.y + 15
+
     text_settings.pos.x = nx
     text_settings.pos.y = settings_table.pos.y
     text_settings.text.font = settings_table.font
@@ -229,14 +233,14 @@ config.register(settings, function(settings_table)
     tbg_cap_settings.pos.x = nx
     tbg_cap_settings.pos.y = settings_table.pos.y
  
-    stbg_cap_settings.pos.x = nx
-    stbg_cap_settings.pos.y = settings_table.pos.y
+    stbg_cap_settings.pos.x = sub_x
+    stbg_cap_settings.pos.y = sub_y
    
     tbg_body_settings.pos.x = nx
     tbg_body_settings.pos.y = settings_table.pos.y
  
-    stbg_body_settings.pos.x = nx
-    stbg_body_settings.pos.y = settings_table.pos.y
+    stbg_body_settings.pos.x = sub_x
+    stbg_body_settings.pos.y = sub_y
   
     tfgg_body_settings.pos.x = nx
     tfgg_body_settings.pos.y = settings_table.pos.y
@@ -244,8 +248,8 @@ config.register(settings, function(settings_table)
     tfg_body_settings.pos.x = nx
     tfg_body_settings.pos.y = settings_table.pos.y
  
-    stfg_body_settings.pos.x = nx
-    stfg_body_settings.pos.y = settings_table.pos.y
+    stfg_body_settings.pos.x = sub_x
+    stfg_body_settings.pos.y = sub_y
     
     tbg_cap_l = images.new(tbg_cap_settings)
     tbg_cap_r = images.new(tbg_cap_settings)
@@ -263,9 +267,9 @@ config.register(settings, function(settings_table)
     tbg_cap_l:pos_x(tbg_cap_l:pos_x() - 1)
     tbg_cap_r:pos_x(tbg_cap_r:pos_x() + targetBarWidth + 1)
     
-    stbg_cap_l:pos(stbg_cap_l:pos_x() + 399, 65)
-    stbg_cap_r:pos(stbg_cap_r:pos_x() + subtargetBarWidth + 1, 65)
-    st_text:pos(st_text:pos_x() + 400, 65)
+    stbg_cap_l:pos(sub_x - 1, sub_y)
+    stbg_cap_r:pos(sub_x + subtargetBarWidth + 1, sub_y)
+    st_text:pos(sub_x, sub_y)
 end)
 
 
