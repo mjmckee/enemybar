@@ -319,6 +319,24 @@ check_claim = function(claim_id)
     return false
 end
 
+-- Name color (r, g, b) for a mob, shared by the target and sub-target bars.
+-- The order of the checks matters: the first match wins.
+get_name_color = function(mob)
+    if mob.hpp == 0 then
+        return 155, 155, 155        -- dead
+    elseif check_claim(mob.claim_id) then
+        return 255, 204, 204        -- claimed by you, your party, or your alliance
+    elseif mob.in_party == true and mob.id ~= player_id then
+        return 102, 255, 255        -- another party member
+    elseif mob.is_npc == false then
+        return 255, 255, 255        -- a player character
+    elseif mob.claim_id == 0 then
+        return 230, 230, 138        -- unclaimed
+    else
+        return 153, 102, 255        -- claimed by someone outside your party/alliance
+    end
+end
+
 target_change = function(index)
     if index == 0 then
         visible = false

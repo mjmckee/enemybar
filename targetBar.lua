@@ -59,20 +59,7 @@ render_target_bar = function (...)
             t_text.hpp = target.hpp
             t_text.debug = debug_string
             
-            --Check claim_id with player and party_id
-            if target.hpp == 0 then
-                t_text:color(155, 155, 155)
-            elseif check_claim(target.claim_id) then
-                t_text:color(255, 204, 204)
-            elseif target.in_party == true and target.id ~= player_id then
-                t_text:color(102, 255, 255)
-            elseif target.is_npc == false then
-                t_text:color(255, 255, 255)
-            elseif target.claim_id == 0 then
-                t_text:color(230, 230, 138) 
-            elseif target.claim_id ~= 0 then
-                t_text:color(153, 102, 255)
-            end			
+            t_text:color(get_name_color(target))
         end
         
     else

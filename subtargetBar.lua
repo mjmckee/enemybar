@@ -48,19 +48,7 @@ render_subtarget_bar = function(...)
             stbg_body:width(subtargetBarWidth)
 
             st_text.name = subtarget.name
-            if subtarget.hpp == 0 then
-                st_text:color(155, 155, 155)
-            elseif check_claim(subtarget.claim_id) then
-                st_text:color(255, 204, 204)
-            elseif subtarget.in_party == true and subtarget.id ~= player_id then
-                st_text:color(102, 255, 255)
-            elseif subtarget.is_npc == false then
-                st_text:color(255, 255, 255)
-            elseif subtarget.claim_id == 0 then
-                st_text:color(230, 230, 138)
-            elseif subtarget.claim_id ~= 0 then
-                st_text:color(153, 102, 255)
-            end
+            st_text:color(get_name_color(subtarget))
         else
             hide_subtarget_bar()
         end
