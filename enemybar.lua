@@ -44,6 +44,14 @@ windower.register_event('load', function()
     end
 end)
 
+windower.register_event('login', function()
+    -- player_id was only set on addon load, so it stayed 0 if you logged in afterwards
+    local me = windower.ffxi.get_player()
+    if me then
+        player_id = me.id
+    end
+end)
+
 windower.register_event('prerender', render_target_bar)
 windower.register_event('prerender', render_subtarget_bar)
 windower.register_event('target change', target_change)

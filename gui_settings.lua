@@ -270,15 +270,22 @@ end)
 
 
 
+-- True only if the claim belongs to you, your party, or your alliance.
+-- An unclaimed mob (claim_id 0/nil) is never "claimed by us".
 check_claim = function(claim_id)
-    if player_id == claim_id then
+    if claim_id == nil or claim_id == 0 then
+        return false
+    end
+
+    local me = windower.ffxi.get_player()
+    if me and me.id == claim_id then
         return true
-    else
-        for i = 1, 5, 1 do
-            member = windower.ffxi.get_mob_by_target('p'..i)
-            if member == nil then
-                -- do nothing
-            elseif member.id == claim_id then 
+    end
+
+    local party = windower.ffxi.get_party()
+    if party then
+        for _, member in pairs(party) do
+            if type(member) == 'table' and member.mob and member.mob.id == claim_id then
                 return true
             end
         end
