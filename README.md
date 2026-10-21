@@ -17,7 +17,7 @@ An addon for Windower 4 (FFXI) that draws a big, easy-to-see health bar for your
 | Yellow | Unclaimed mob                                                      |
 | Pink   | Claimed by you, your party, or your alliance                       |
 | Purple | Claimed by someone outside your party and alliance                 |
-| Cyan   | A party member (other than you)                                    |
+| Cyan   | Another party or alliance member (other than you)                  |
 | White  | A player character                                                 |
 | Gray   | The target is dead (0% HP)                                         |
 

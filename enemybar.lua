@@ -25,7 +25,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 _addon.name = 'enemybar'
 _addon.author = 'mmckee'
-_addon.version = '1.1.2'
+_addon.version = '1.2.0'
 _addon.language = 'English'
 
 config = require('config')
@@ -39,19 +39,19 @@ require('drag')
 player_id = 0
 debug_string = ''
 
-windower.register_event('load', function()
-    if windower.ffxi.get_info().logged_in then
-        player_id = windower.ffxi.get_player().id
-    end
-end)
-
-windower.register_event('login', function()
-    -- player_id was only set on addon load, so it stayed 0 if you logged in afterwards
+-- Keeps player_id correct. It used to be set only when the addon loaded, so it
+-- stayed 0 if you logged in afterwards or switched characters.
+local refresh_player_id = function()
     local me = windower.ffxi.get_player()
     if me then
         player_id = me.id
     end
-end)
+end
+
+windower.register_event('load', refresh_player_id)
+windower.register_event('login', refresh_player_id)
+-- zone change also fires when logging in or out
+windower.register_event('zone change', refresh_player_id)
 
 windower.register_event('prerender', render_target_bar)
 windower.register_event('prerender', render_subtarget_bar)

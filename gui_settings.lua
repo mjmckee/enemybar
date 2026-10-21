@@ -67,7 +67,7 @@ tbg_cap_settings.color.green = 0
 tbg_cap_settings.color.blue = 0
 tbg_cap_settings.size = {}
 tbg_cap_settings.size.width = 1
-tbg_cap_settings.size.height = 598
+tbg_cap_settings.size.height = targetBarHeight
 tbg_cap_settings.texture = {}
 tbg_cap_settings.texture.path = bg_cap_path
 tbg_cap_settings.texture.fit = true
@@ -326,8 +326,8 @@ get_name_color = function(mob)
         return 155, 155, 155        -- dead
     elseif check_claim(mob.claim_id) then
         return 255, 204, 204        -- claimed by you, your party, or your alliance
-    elseif mob.in_party == true and mob.id ~= player_id then
-        return 102, 255, 255        -- another party member
+    elseif (mob.in_party == true or mob.in_alliance == true) and mob.id ~= player_id then
+        return 102, 255, 255        -- another party or alliance member
     elseif mob.is_npc == false then
         return 255, 255, 255        -- a player character
     elseif mob.claim_id == 0 then
