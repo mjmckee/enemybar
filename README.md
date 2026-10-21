@@ -7,6 +7,7 @@ An addon for Windower 4 (FFXI) that draws a big, easy-to-see health bar for your
 - **Target bar:** a wide bar at the top of the screen showing the target's name and HP%. While you are in combat, a lighter trailing segment slowly shrinks to show recent damage.
 - **Sub-target bar:** a smaller blue bar under the target bar that shows the sub-target's name and HP. It only appears when the sub-target is a different mob than your target.
 - **Claim colors:** the name changes color so you can tell at a glance who owns a mob.
+- **Drag to move:** click and drag any part of either bar to move the whole thing. The new position is saved when you let go. Clicks on the bars don't reach the game, and the bars are only visible (and draggable) while you have a target.
 - Both bars hide automatically when you have no target.
 
 ## Name colors
@@ -36,7 +37,7 @@ After updating the files, run `//lua reload enemybar` to pick up the changes.
 
 ## Settings
 
-A settings file is created the first time the addon loads, at `Windower4/addons/enemybar/data/settings.xml`. Edit it, then reload the addon.
+A settings file is created the first time the addon loads, at `Windower4/addons/enemybar/data/settings.xml`. Dragging the bars updates the position here for you. You can also edit it by hand, then reload the addon.
 
 | Setting     | Default | Description                                                                 |
 |-------------|---------|-----------------------------------------------------------------------------|
@@ -55,6 +56,7 @@ The target bar is 598 pixels wide and the sub-target bar is 198 pixels wide. The
 | `targetBar.lua`    | Draws and updates the target bar.                                |
 | `subtargetBar.lua` | Draws and updates the sub-target bar.                            |
 | `gui_settings.lua` | Bar sizes, positions, colors, settings loading and claim checks. |
+| `drag.lua`         | Click-and-drag handling that moves both bars together.           |
 | `*.png`            | Textures for the bar background, end caps and fill.              |
 
 ## License

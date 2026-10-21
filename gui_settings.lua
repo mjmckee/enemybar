@@ -209,6 +209,33 @@ defaults.pos = {}
 defaults.pos.x = 400
 defaults.pos.y = 50
 
+-- Top-left corner of the main bar. Everything else is positioned relative to it.
+bar_x = 0
+bar_y = 0
+
+-- Moves every piece of both bars. The sub-target bar sits under the main bar,
+-- right-aligned with it.
+position_bars = function(x, y)
+    bar_x = x
+    bar_y = y
+
+    local sub_x = x + targetBarWidth - subtargetBarWidth
+    local sub_y = y + 15
+
+    tbg_cap_l:pos(x - 1, y)
+    tbg_cap_r:pos(x + targetBarWidth + 1, y)
+    tbg_body:pos(x, y)
+    tfg_body:pos(x, y)
+    tfgg_body:pos(x, y)
+    t_text:pos(x, y)
+
+    stbg_cap_l:pos(sub_x - 1, sub_y)
+    stbg_cap_r:pos(sub_x + subtargetBarWidth + 1, sub_y)
+    stbg_body:pos(sub_x, sub_y)
+    stfg_body:pos(sub_x, sub_y)
+    st_text:pos(sub_x, sub_y)
+end
+
 settings = config.load(defaults)
 config.save(settings)
 
@@ -264,12 +291,7 @@ config.register(settings, function(settings_table)
     stfg_body = images.new(stfg_body_settings)
     st_text = texts.new(' ${name|(Name)}', text_settings)
     
-    tbg_cap_l:pos_x(tbg_cap_l:pos_x() - 1)
-    tbg_cap_r:pos_x(tbg_cap_r:pos_x() + targetBarWidth + 1)
-    
-    stbg_cap_l:pos(sub_x - 1, sub_y)
-    stbg_cap_r:pos(sub_x + subtargetBarWidth + 1, sub_y)
-    st_text:pos(sub_x, sub_y)
+    position_bars(nx, settings_table.pos.y)
 end)
 
 

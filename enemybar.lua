@@ -25,7 +25,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 _addon.name = 'enemybar'
 _addon.author = 'mmckee'
-_addon.version = '1.0.3'
+_addon.version = '1.1.0'
 _addon.language = 'English'
 
 config = require('config')
@@ -34,6 +34,7 @@ texts = require('texts')
 require('gui_settings')
 require('targetBar')
 require('subtargetBar')
+require('drag')
 
 player_id = 0
 debug_string = ''
