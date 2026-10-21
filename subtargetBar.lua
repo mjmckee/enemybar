@@ -23,6 +23,14 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --]]
 
+local hide_subtarget_bar = function()
+    stbg_cap_l:hide()
+    stbg_cap_r:hide()
+    stbg_body:hide()
+    stfg_body:hide()
+    st_text:hide()
+end
+
 render_subtarget_bar = function(...)
     if visible == true then
         local subtarget = windower.ffxi.get_mob_by_target('st')
@@ -54,11 +62,10 @@ render_subtarget_bar = function(...)
                 st_text:color(153, 102, 255)
             end
         else
-            stbg_cap_l:hide()
-            stbg_cap_r:hide()
-            stbg_body:hide()
-            stfg_body:hide()
-            st_text:hide()
+            hide_subtarget_bar()
         end
+    else
+        -- No target at all: hide the sub-target bar too, like the target bar does
+        hide_subtarget_bar()
     end
 end
